@@ -1,0 +1,115 @@
+---------------------------------------------------------------------------------------------------------------------------------
+GEt the manager info of a given club
+
+SELECT manager.Name, manager.Age, manager.Country, manager.Contact,manager.Email, manager.Income from manager JOIN club on club.Manager_id = manager.Id WHERE club.Name LIKE %s
+
+---------------------------------------------------------------------------------------------------------------------------------
+Generate Team Sheet of a club
+
+SELECT players.Name FROM players JOIN club on players.Club_id = club.Id WHERE club.Name LIKE %s
+
+---------------------------------------------------------------------------------------------------------------------------------
+Get all the player info of a specified player
+
+SELECT players.Name, players.Position, players.Worth, players.Age, players.Rating, players.Career_goals, players.Jersey_no, club.Name, country.Name FROM (players JOIN club on players.Club_id = club.Id) JOIN country ON players.Country = country.Country_id WHERE players.Name LIKE %s
+
+---------------------------------------------------------------------------------------------------------------------------------
+Initiate a transfer
+
+INSERT into transfers values (%s, %s, %s, %s)
+
+---------------------------------------------------------------------------------------------------------------------------------
+View all the youth players having a potential greater than or equal to a specified rating
+
+SELECT youth_academy.Name, youth_academy.Potential, youth_academy.Position, youth_academy.Worth FROM youth_academy WHERE youth_academy.Potential >= %s
+
+---------------------------------------------------------------------------------------------------------------------------------
+Check the match schedule of a particular date
+
+SELECT schedule.Date, schedule.Time, schedule.Team1, schedule.Team2, league.Name FROM schedule JOIN league ON schedule.League_id = league.Id where schedule.Date LIKE %s
+
+---------------------------------------------------------------------------------------------------------------------------------
+Get the match results of a particular date
+
+SELECT * FROM (schedule JOIN result on schedule.Match_id = result.Result_id) JOIN league on schedule.League_id = league.Id where schedule.Date LIKE %s
+---------------------------------------------------------------------------------------------------------------------------------
+Check for all the clubs participating a particular league
+
+SELECT club.Name FROM (league_participation JOIN league ON league_participation.League_id = league.Id) JOIN club ON league_participation.Club_id = club.Id WHERE league.Name LIKE %s
+
+---------------------------------------------------------------------------------------------------------------------------------
+Delete a scheduled match
+
+DELETE FROM schedule WHERE schedule.Date LIKE %s
+
+---------------------------------------------------------------------------------------------------------------------------------Show the Players name,country name,worth,age and rating of the players whose position is DF and rating is more than David Alaba.
+
+SELECT 		P.Name,P.Position,C.Name as Country,P.Worth,P.Age,P.Rating 
+from 		players as P JOIN country as C on P.Country = C.Country_id 
+WHERE 		Rating > ( SELECT Rating from players WHERE Name = "David Alaba") 
+AND 		Position = "DF" ORDER BY Rating DESC
+
+---------------------------------------------------------------------------------------------------------------------------------
+Find the number of players of each country in the database,also find their average rating,worth and age respectively for each country.
+
+SELECT country.name as Country,COUNT(players.Id) as No_Of_Players,AVG(Rating) as Average_Rating_of_Players,Avg(Age) as Average_Age_of_Players,Avg(Worth) as Average_Worth_of_Players 
+from players right join country on players.country = country.Country_id 
+GROUP BY country
+
+---------------------------------------------------------------------------------------------------------------------------------
+Find the number of players in each club in the database,also find their average rating,worth and age respectively and sort them in descending order of their ratings.
+
+SELECT club.Name as Name,COUNT(players.Id) as No_of_Players,AVG(Rating) as Average_Rating,AVG(Age) as Average_Age,AVG(Worth) as Average_Worth 
+from players join club on players.Club_id = club.Id 
+GROUP BY Club_id 
+ORDER BY Average_Rating DESC
+
+---------------------------------------------------------------------------------------------------------------------------------
+Select the names and Career goals of the players who have scored more than average Career goals.
+
+SELECT name,Career_goals 
+from players 
+where Career_goals >= ( SELECT AVG(Career_goals) from players ) 
+ORDER BY Career_goals
+
+---------------------------------------------------------------------------------------------------------------------------------
+Select names of the countries that have atleast one scout associated with them
+
+SELECT 	country.Name as Country_Name 
+FROM 	scouts join country on scouts.Country_id = country.Country_id 
+WHERE 	EXISTS 
+			( 
+			SELECT * 
+			FROM scouts 
+			where scouts.Country_id = country.Country_id 
+			)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Select the names and clubs of all the players from Spain.
+
+SELECT 		players.Name as Name,club.name as Club 
+FROM 		players join club on players.Club_id = club.Id 
+WHERE 		Country IN
+			( 
+				SELECT Country_id 
+				FROM country 
+				WHERE NAME = "Spain" 
+			)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Select the name of the club that has the lowest Profit.
+
+SELECT 		Name 
+from 		club join finance on club.Account_id = finance.Account_id 
+where 		club.Account_id = 
+			(
+				SELECT Account_id 
+				from finance 
+				where Profit = 
+				(
+					SELECT MIN(Profit) 
+					from finance
+				)
+			)
+
+---------------------------------------------------------------------------------------------------------------------------------
