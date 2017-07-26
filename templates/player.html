@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF8">
+		<title>{{ name }}</title>
+        <style>
+            h3{
+                display:inline;
+                white-space: nowrap;
+            }
+        </style>
+	</head>
+	<body>
+        <h1 align = "center">{{ name }} </h1>
+		<!--<p> Source is - {{ source }} </p>-->
+		<img src= "/static/{{ source }}" alt = {{ source }} width = "1000px" height = "700px" />
+        <br/>
+        <br/>
+        <h3>Club :</h3> <pre>               {{ club }} </pre><br/>
+        <h3>Country :</h3> <pre>                {{ country }} </pre> <br/>
+        <h3>Position :</h3> <pre>               {{ position }} </pre> <br/>
+        <h3>Worth (in Million Euros) :</h3> <pre>               {{ worth }} </pre> <br/>
+        <h3>Age :</h3> <pre>                {{ age }} </pre> <br/>
+        <h3>Jersey Number :</h3> <pre>              {{ jersey_no }} </pre> <br/>
+        <h3>Rating :</h3> <pre>             {{ rating }} </pre> <br/>
+        <h3>Career Goals :</h3> <pre>               {{ career_goals }} </pre> <br/>
+
+		<a href = "/queries/"> QUERIES </a>
+	</body>
+</html>

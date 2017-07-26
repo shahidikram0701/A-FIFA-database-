@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+   <body>
+
+      <h2 style = "text-align: center; ">REGISTER Form</h2>
+
+      {% for message in form.name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      {% for message in form.email.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      <form action = "http://localhost:5000/register/" method = post>
+         <fieldset>
+            <legend>Register Form</legend>
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ form.name.label }}<br>
+               {{ form.name }}
+               <br>
+
+               {{ form.Gender.label }} {{ form.Gender }}
+               <br>
+
+               {{ form.email.label }}<br>
+               {{ form.email }}
+               <br>
+
+               {{ form.Age.label }}<br>
+               {{ form.Age }}
+               <br>
+
+               {{ form.password.label }}<br>
+               {{ form.password }}
+               <br>
+               {{ form.submit }}
+            </div>
+
+         </fieldset>
+      </form>
+      <br/><br/>
+      <h1 style = "display:inline;"><a href="http://localhost:5000/login/">CLICK HERE</a></h1> <h3 style = "display:inline;">if you have already registered</h3>
+   </body>
+</html>

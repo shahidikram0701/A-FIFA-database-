@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>Queries</title>
+    </head>
+    <body>
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Search Players</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form1.playerName.label }}<br>
+                 {{ form1.playerName }}
+                 <br/>
+                 {{ form1.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Club Members</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form2.clubName.label }}<br>
+                 {{ form2.clubName }}
+                 <br/>
+                 {{ form2.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Manager Details</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form3.club.label }}<br>
+                 {{ form3.club }}
+                 <br/>
+                 {{ form3.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Transfers</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form4.player.label }}<br>
+                 {{ form4.player }}
+                 <br/>
+                 {{ form4.clubTo.label }}<br>
+                 {{ form4.clubTo }}
+                 <br/>
+                 {{ form4.transferFee.label }}<br>
+                 {{ form4.transferFee }}
+                 <br/>
+                 {{ form4.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Search for youth</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form5.potential.label }}<br>
+                 {{ form5.potential }}
+                 <br/>
+                 {{ form5.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Check the schedule for matches</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form6.date.label }}<br>
+                 {{ form6.date }}
+                 <br/>
+                 {{ form6.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Check the result of a match</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form7.result.label }}<br>
+                 {{ form7.result }}
+                 <br/>
+                 {{ form7.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Teams battling in a League</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form8.league_participation.label }}<br>
+                 {{ form8.league_participation }}
+                 <br/>
+                 {{ form8.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+
+        <form action = "/queries/" method = post>
+           <fieldset>
+              <legend>Delete a scheduled match</legend>
+
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                 {{ form9.matchDel.label }}<br>
+                 {{ form9.matchDel }}
+                 <br/>
+                 {{ form9.submit }}
+              </div>
+          </fieldset>
+        </form>
+
+        <br/><br/>
+        <a href = '/homepage2/'> Back </a>
+        <br/>
+        <br/>
+        <a href = '/logout/'>Logout</a>
+    </body>
+</html>
